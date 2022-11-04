@@ -19,7 +19,9 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
+
+var _unescape = require("./unescape");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -32,12 +34,11 @@ var defaultOptions = {
   transSupportBasicHtmlNodes: true,
   transWrapTextNodes: '',
   transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
-  useSuspense: true
+  useSuspense: true,
+  unescape: _unescape.unescape
 };
 var i18nInstance;
-
-var I18nContext = _react["default"].createContext();
-
+var I18nContext = (0, _react.createContext)();
 exports.I18nContext = I18nContext;
 
 function setDefaults() {

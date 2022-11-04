@@ -7,7 +7,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-import React from 'react';
+import { createElement, forwardRef as forwardRefReact } from 'react';
 import { useTranslation } from './useTranslation';
 import { getDisplayName } from './utils';
 export function withTranslation(ns) {
@@ -17,7 +17,9 @@ export function withTranslation(ns) {
       var forwardedRef = _ref.forwardedRef,
           rest = _objectWithoutProperties(_ref, _excluded);
 
-      var _useTranslation = useTranslation(ns, rest),
+      var _useTranslation = useTranslation(ns, _objectSpread(_objectSpread({}, rest), {}, {
+        keyPrefix: options.keyPrefix
+      })),
           _useTranslation2 = _slicedToArray(_useTranslation, 3),
           t = _useTranslation2[0],
           i18n = _useTranslation2[1],
@@ -35,18 +37,18 @@ export function withTranslation(ns) {
         passDownProps.forwardedRef = forwardedRef;
       }
 
-      return React.createElement(WrappedComponent, passDownProps);
+      return createElement(WrappedComponent, passDownProps);
     }
 
     I18nextWithTranslation.displayName = "withI18nextTranslation(".concat(getDisplayName(WrappedComponent), ")");
     I18nextWithTranslation.WrappedComponent = WrappedComponent;
 
     var forwardRef = function forwardRef(props, ref) {
-      return React.createElement(I18nextWithTranslation, Object.assign({}, props, {
+      return createElement(I18nextWithTranslation, Object.assign({}, props, {
         forwardedRef: ref
       }));
     };
 
-    return options.withRef ? React.forwardRef(forwardRef) : I18nextWithTranslation;
+    return options.withRef ? forwardRefReact(forwardRef) : I18nextWithTranslation;
   };
 }

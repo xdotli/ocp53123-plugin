@@ -13,7 +13,7 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
 
 var _useTranslation3 = require("./useTranslation");
 
@@ -32,7 +32,9 @@ function withTranslation(ns) {
       var forwardedRef = _ref.forwardedRef,
           rest = (0, _objectWithoutProperties2["default"])(_ref, _excluded);
 
-      var _useTranslation = (0, _useTranslation3.useTranslation)(ns, rest),
+      var _useTranslation = (0, _useTranslation3.useTranslation)(ns, _objectSpread(_objectSpread({}, rest), {}, {
+        keyPrefix: options.keyPrefix
+      })),
           _useTranslation2 = (0, _slicedToArray2["default"])(_useTranslation, 3),
           t = _useTranslation2[0],
           i18n = _useTranslation2[1],
@@ -50,18 +52,18 @@ function withTranslation(ns) {
         passDownProps.forwardedRef = forwardedRef;
       }
 
-      return _react["default"].createElement(WrappedComponent, passDownProps);
+      return (0, _react.createElement)(WrappedComponent, passDownProps);
     }
 
     I18nextWithTranslation.displayName = "withI18nextTranslation(".concat((0, _utils.getDisplayName)(WrappedComponent), ")");
     I18nextWithTranslation.WrappedComponent = WrappedComponent;
 
     var forwardRef = function forwardRef(props, ref) {
-      return _react["default"].createElement(I18nextWithTranslation, Object.assign({}, props, {
+      return (0, _react.createElement)(I18nextWithTranslation, Object.assign({}, props, {
         forwardedRef: ref
       }));
     };
 
-    return options.withRef ? _react["default"].forwardRef(forwardRef) : I18nextWithTranslation;
+    return options.withRef ? (0, _react.forwardRef)(forwardRef) : I18nextWithTranslation;
   };
 }

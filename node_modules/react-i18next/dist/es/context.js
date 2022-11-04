@@ -6,7 +6,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-import React from 'react';
+import { createContext } from 'react';
+import { unescape } from './unescape';
 var defaultOptions = {
   bindI18n: 'languageChanged',
   bindI18nStore: '',
@@ -14,10 +15,11 @@ var defaultOptions = {
   transSupportBasicHtmlNodes: true,
   transWrapTextNodes: '',
   transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
-  useSuspense: true
+  useSuspense: true,
+  unescape: unescape
 };
 var i18nInstance;
-export var I18nContext = React.createContext();
+export var I18nContext = createContext();
 export function setDefaults() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   defaultOptions = _objectSpread(_objectSpread({}, defaultOptions), options);

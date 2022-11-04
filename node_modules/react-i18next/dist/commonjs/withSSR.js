@@ -11,7 +11,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = require("react");
 
 var _useSSR = require("./useSSR");
 
@@ -32,7 +32,7 @@ function withSSR() {
           initialLanguage = _ref.initialLanguage,
           rest = (0, _objectWithoutProperties2["default"])(_ref, _excluded);
       (0, _useSSR.useSSR)(initialI18nStore, initialLanguage);
-      return _react["default"].createElement(WrappedComponent, _objectSpread({}, rest));
+      return (0, _react.createElement)(WrappedComponent, _objectSpread({}, rest));
     }
 
     I18nextWithSSR.getInitialProps = (0, _context.composeInitialProps)(WrappedComponent);
