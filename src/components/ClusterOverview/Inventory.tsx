@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { MonitoringIcon } from '@patternfly/react-icons';
 import {
   K8sResourceCommon,
   useK8sWatchResource,
@@ -13,6 +12,12 @@ import {
 } from '@openshift-console/dynamic-plugin-sdk';
 
 const workerNodesLink = '/k8s/cluster/nodes?rowFilter-node-role=worker';
+
+const icon = () => {
+  return (
+    <span>icon</span>
+  )
+}
 
 const WorkerNodeInventory: React.FC = () => {
   const { t } = useTranslation("plugin__console-demo-plugin");
@@ -34,7 +39,7 @@ const WorkerNodeInventory: React.FC = () => {
     <InventoryItem>
       <InventoryItemTitle>{title}</InventoryItemTitle>
       <InventoryItemBody error={loadError}>
-        {loaded && <InventoryItemStatus count={workerNodes.length} icon={<MonitoringIcon />} />}
+        {loaded && <InventoryItemStatus count={workerNodes.length} icon={icon} />}
       </InventoryItemBody>
     </InventoryItem>
   )

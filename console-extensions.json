@@ -14,17 +14,6 @@
     }
   },
   {
-    "type": "console.flag/model",
-    "properties": {
-      "flag": "EXAMPLE",
-      "model": {
-        "group": "kubevirt.io",
-        "version": "v1alpha3",
-        "kind": "ExampleModel"
-      }
-    }
-  },
-  {
     "type": "console.telemetry/listener",
     "properties": {
       "listener": {
@@ -350,13 +339,6 @@
       "title": "%plugin__console-demo-plugin~Foo item%",
       "getUtilizationQuery": { "$codeRef": "projectOverview.getUtilizationQuery" },
       "humanize": { "$codeRef": "clusterOverview.humanize" }
-    }
-  },
-  {
-    "type": "console.page/route",
-    "properties": {
-      "path": "/test-modal",
-      "component": { "$codeRef": "modalPage.TestModalPage" }
     }
   },
   {
